@@ -1,0 +1,16 @@
+{
+  "currentWeather": "http://api.openweathermap.org/data/2.5/weather?q={{town}}&APPID={{API_KEY}}&units=metric",
+  "API_KEY": "f035c26a3000cc8bb3275f7ffa092787",
+  "images": {
+    "broken clouds": "broken clouds.jpg",
+    "clear sky": "clear sky.jpg",
+    "few clouds": "few clouds.jpg",
+    "mist": "mist.jpg",
+    "rain": "rain.jpg",
+    "scattered clouds": "scattered clouds.jpg",
+    "shower rain": "shower rain.jpg",
+    "snow": "snow.jpg",
+    "thunderstorm": "thunderstorm.jpg"
+  },
+  "path": "assets/img/"
+}
