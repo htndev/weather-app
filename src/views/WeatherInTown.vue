@@ -50,7 +50,6 @@ export default {
   }),
 
   created () {
-    // eslint-disable-next-line handle-callback-err
     this.getWeather(this.$route.params.townTitle).catch(err => {
       this.cityFound = false
       this.errorText = err.response.data.message

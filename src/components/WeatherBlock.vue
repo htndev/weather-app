@@ -29,6 +29,9 @@
       <v-skeleton-loader type="text" :loading="loadingContent" transition="fade-transition" title="Weather Info">
         <h2>Direction: {{direction}}</h2>
       </v-skeleton-loader>
+      <v-skeleton-loader type="button" :loading="loadingContent" transition="fade-transition" title="Favorite">
+        <AddFavoritesButton :town="weather.name"/>
+      </v-skeleton-loader>
     </v-col>
   </v-row>
 </template>
@@ -37,11 +40,15 @@
 import { degToCompass, isEmptyObject } from '../helpers'
 import { mapState } from 'vuex'
 import { weatherMixin } from '../mixins/weather'
+import AddFavoritesButton from './AddFavoritesButton'
 
 export default {
   name: 'WeatherBlock',
   props: {
     weather: Object
+  },
+  components: {
+    AddFavoritesButton
   },
   mixins: [weatherMixin],
   computed: {
@@ -54,7 +61,8 @@ export default {
     isEmptyObject
   },
   data: () => ({
-    img: ''
+    img: '',
+    checked: true
   })
 }
 </script>

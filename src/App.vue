@@ -48,7 +48,6 @@ export default {
     async findLocation () {
       const data = await axios.get('https://api.ipify.org?format=json').catch(error => console.log(error)),
         ipInfo = await axios.get(`http://api.ipstack.com/${data.data.ip}?access_key=1cd530d4fb1d4b6812a5fef00d3a4e4f`)
-
       if (this.$route.params.townTitle !== ipInfo.data.city) {
         await this.getWeather(ipInfo.data.city)
         await this.$router.push({ name: 'Weather',
@@ -84,5 +83,10 @@ export default {
 
   .fade-enter, .fade-leave-active {
     opacity: 0;
+  }
+
+  .v-image {
+    width: 100%;
+    height: auto;
   }
 </style>

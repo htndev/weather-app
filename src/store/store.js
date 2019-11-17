@@ -28,9 +28,7 @@ export default new Vuex.Store({
       Ash, Clear, Clouds, Drizzle, Dust, Fog, Haze, Mist, Rain, Sand, Smoke, Squall, Thunderstorm, Tornado, Snow
     },
     loadingContent: true,
-    favorites: {
-
-    }
+    favorites: []
   },
   getters: {},
   mutations: {

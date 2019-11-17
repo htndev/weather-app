@@ -48,21 +48,7 @@
         md="6"
         cols="12"
       >
-        <v-skeleton-loader
-          type="image, card-heading"
-          :loading="loading"
-        >
-          <v-card @mouseover="mouseOn">
-            <router-link :to="'/weather/' + search">
-              <v-img :src="img"></v-img>
-            </router-link>
-            <v-card-title>{{weather.name}}</v-card-title>
-            <v-card-text><strong>Temperature:</strong> {{weather | cardDescription}}°C</v-card-text>
-            <v-card-text>
-              <router-link :to="'/weather/' + search">Details</router-link>
-            </v-card-text>
-          </v-card>
-        </v-skeleton-loader>
+        <WeatherCard :search="search" :weather="weather" :loading="loading"/>
       </v-col>
     </v-row>
   </v-container>
@@ -71,7 +57,7 @@
 <script>
 import { mapActions, mapState, mapMutations } from 'vuex'
 import { weatherMixin } from '../mixins/weather'
-import { isEmptyObject } from '../helpers'
+import WeatherCard from '../components/WeatherCard'
 
 export default {
   name: 'Home',
@@ -83,14 +69,15 @@ export default {
     alertText: ''
   }),
   mixins: [weatherMixin],
-  filters: {
-    cardDescription: value => isEmptyObject(value) ? Math.round(value.main.temp) : ''
+  components: {
+    WeatherCard
   },
   computed: {
     ...mapState({
       weather: 'weatherInfo',
       weatherImages: 'weatherImages',
-      loading: 'loadingContent'
+      loading: 'loadingContent',
+      favs: 'favorites'
     })
   },
   methods: {
@@ -106,9 +93,6 @@ export default {
         // eslint-disable-next-line no-return-assign
         setTimeout(() => this.errorAlert = false, 4000)
       })
-    },
-    mouseOn (event) {
-      // console.log(event)
     }
   }
 }
@@ -133,12 +117,7 @@ a {
   color: #42B983;
 }
 
-.v-image {
-  width: 100%;
-  height: auto;
+.container {
+  position: relative;
 }
-
-  .container {
-    position: relative;
-  }
 </style>
