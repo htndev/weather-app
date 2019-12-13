@@ -41,6 +41,12 @@ export default new Vuex.Store({
     clearWeather (state) {
       state.weatherInfo = {}
       state.loadingContent = false
+    },
+    removeFavorite (state, payload) {
+      state.favorites.splice(payload, 1)
+    },
+    addFavorite (state, payload) {
+      state.favorites.push(payload)
     }
   },
   actions: {

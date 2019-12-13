@@ -5,11 +5,20 @@
       dark
       color="deep-purple accent-4"
     >
+      <router-link
+        to="/"
+        class="white--text"
+      >
+        Weather App
+      </router-link>
 
-      <router-link to="/" class="white--text">Weather App</router-link>
-
-      <v-spacer></v-spacer>
-      <router-link to="/favorites" class="mr-5 white--text">Favorites</router-link>
+      <v-spacer />
+      <router-link
+        to="/favorites"
+        class="mr-5 white--text"
+      >
+        Favorites
+      </router-link>
       <v-btn
         outlined
         text
@@ -31,7 +40,7 @@
 
     <v-content>
       <transition name="fade">
-        <router-view/>
+        <router-view />
       </transition>
     </v-content>
   </v-app>

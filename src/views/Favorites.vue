@@ -4,8 +4,18 @@
       <h1>Favorites</h1>
     </v-row>
     <v-row v-if="favorites.length">
-      <v-col cols="12" md="6" lg="4" v-for="favorite in weathers" :key="favorite.name">
-        <WeatherCard :search="favorite.name" :weather="favorite" class="pa-2"/>
+      <v-col
+        v-for="favorite in weathers"
+        :key="favorite.name"
+        cols="12"
+        md="6"
+        lg="4"
+      >
+        <WeatherCard
+          :search="favorite.name"
+          :weather="favorite"
+          class="pa-2"
+        />
       </v-col>
     </v-row>
     <v-row v-else>
@@ -24,6 +34,9 @@ export default {
   computed: {
     ...mapState(['favorites'])
   },
+  components: {
+    WeatherCard
+  },
   data: () => ({
     weathers: []
   }),
@@ -31,9 +44,6 @@ export default {
     favorites () {
       this.getWeathers()
     }
-  },
-  components: {
-    WeatherCard
   },
   methods: {
     ...mapActions(['getWeather']),

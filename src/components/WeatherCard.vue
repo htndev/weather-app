@@ -5,14 +5,16 @@
   >
     <v-card>
       <router-link :to="'/weather/' + search">
-        <v-img :src="img"></v-img>
+        <v-img :src="img" />
       </router-link>
-      <v-card-title>{{weather.name}}</v-card-title>
-      <v-card-text><strong>Temperature:</strong> {{weather | cardDescription}}°C</v-card-text>
+      <v-card-title>{{ weather.name }}</v-card-title>
+      <v-card-text><strong>Temperature:</strong> {{ weather | cardDescription }}°C</v-card-text>
       <v-card-actions>
-        <router-link :to="'/weather/' + search">Details</router-link>
-        <v-spacer></v-spacer>
-        <AddFavoritesButton :town="search"/>
+        <router-link :to="'/weather/' + search">
+          Details
+        </router-link>
+        <v-spacer />
+        <AddFavoritesButton :town="search" />
       </v-card-actions>
     </v-card>
   </v-skeleton-loader>
@@ -34,16 +36,16 @@ export default {
   computed: {
     ...mapState(['weatherImages'])
   },
-  mixins: [weatherMixin],
   filters: {
     cardDescription: value => isEmptyObject(value) ? Math.round(value.main.temp) : ''
   },
-  data: () => ({
-    img: ''
-  }),
   components: {
     AddFavoritesButton
   },
+  mixins: [weatherMixin],
+  data: () => ({
+    img: ''
+  }),
   created () {
     if (isEmptyObject(this.weather)) {
       this.img = this.weatherImages[ this.weather.weather[0].main ]

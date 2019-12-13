@@ -9,8 +9,8 @@
       prominent
       border="right"
     >
-    {{alertText}}
-  </v-alert>
+      {{ alertText }}
+    </v-alert>
     <h1>Home</h1>
     <v-row>
       <v-col
@@ -19,14 +19,14 @@
         cols="6"
       >
         <v-text-field
-          placeholder="E.g, Berlin"
           v-model="search"
+          placeholder="E.g, Berlin"
           @keypress.enter="searchWeather"
-        ></v-text-field>
+        />
       </v-col>
       <v-col
         cols="1"
-      ></v-col>
+      />
       <v-col
         lg="1"
         md="1"
@@ -48,7 +48,11 @@
         md="6"
         cols="12"
       >
-        <WeatherCard :search="search" :weather="weather" :loading="loading"/>
+        <WeatherCard
+          :search="search"
+          :weather="weather"
+          :loading="loading"
+        />
       </v-col>
     </v-row>
   </v-container>
@@ -61,6 +65,10 @@ import WeatherCard from '../components/WeatherCard'
 
 export default {
   name: 'Home',
+  components: {
+    WeatherCard
+  },
+  mixins: [weatherMixin],
   data: () => ({
     search: '',
     img: '',
@@ -68,10 +76,6 @@ export default {
     errorAlert: false,
     alertText: ''
   }),
-  mixins: [weatherMixin],
-  components: {
-    WeatherCard
-  },
   computed: {
     ...mapState({
       weather: 'weatherInfo',
